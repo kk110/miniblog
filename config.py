@@ -21,6 +21,12 @@ class Config(object):
 
 class developementConfig(Config):
     DEBUG = True
+    MAIL_SERVER = 'smtp.163.com'
+    MAIL_PORT = 465
+    MAIL_USE_SSL = True
+    MAIL_USERNAME = 'klk_1115@163.com'
+    MAIL_PASSWORD = 'studyuse1115'
+    MAIL_DEFAULT_SENDER = 'cooladmin<klk_1115@163.com>'
 
 
 class productiveConfig(Config):
