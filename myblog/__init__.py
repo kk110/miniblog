@@ -8,12 +8,16 @@ from config import Config,config
 import logging
 from logging.handlers import RotatingFileHandler
 from flask_mail import Mail
+from flask.ext.bootstrap import Bootstrap
+from flask.ext.moment import Moment
 
 # 项目初始化
 db = SQLAlchemy()
 redis_store = None
 csrf = CSRFProtect()
 mail = Mail()
+bootstrap = Bootstrap()
+moment = Moment()
 
 # logging
 # logging.basicConfig(level=logging.DEBUG)
@@ -32,6 +36,8 @@ def create_app(app_name):
     csrf.init_app(app)
     Session(app)
     mail.init_app(app)
+    bootstrap.init_app(app)
+    moment.init_app(app)
 
     import api_1_0
     app.register_blueprint(api_1_0.api, url_prefix='/api/v1.0')
